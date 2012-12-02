@@ -1,0 +1,4 @@
+christosh
+=========
+
+shell environment goodies
