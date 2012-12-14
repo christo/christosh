@@ -8,3 +8,8 @@ cw() {
 psg() {
     ps aux |grep $1 |grep -v grep
 }
+
+cleanMavenSnapshots() {
+    find $HOME/.m2/repository -name '*SNAPSHOT*' ! -atime -100d -delete
+    echo 'purged old unused (100days) snapshots from maven repo'
+}
