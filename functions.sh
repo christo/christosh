@@ -22,3 +22,8 @@ cleanMacPoo() {
         find $1 -name '._*' -o -name '.Spotlight-*' -o -name '.fseventsd' -print -delete
     fi
 }
+
+# lists processes listening on tcp ports
+listeners() {
+    lsof -nP -i4TCP | grep LISTEN
+}
