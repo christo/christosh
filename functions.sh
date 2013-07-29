@@ -10,6 +10,15 @@ psg() {
 }
 
 cleanMavenSnapshots() {
-    find $HOME/.m2/repository -name '*SNAPSHOT*' ! -atime -100d -delete
-    echo 'purged old unused (100days) snapshots from maven repo'
+    find $HOME/.m2/repository -name '*SNAPSHOT*' ! -atime -40d -print -delete
+    echo 'purged old unused (40 days) snapshots from maven repo'
+}
+
+cleanMacPoo() {
+    if [[ $# != 1 ]]; then 
+        echo 'usage: cleanMacPoo <dir>'
+    else
+        echo cleaning from $1 :
+        find $1 -name '._*' -o -name '.Spotlight-*' -o -name '.fseventsd' -print -delete
+    fi
 }
