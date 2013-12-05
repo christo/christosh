@@ -10,8 +10,9 @@ psg() {
 }
 
 cleanMavenSnapshots() {
-    find $HOME/.m2/repository -name '*SNAPSHOT*' ! -atime -40d -print -delete
-    echo 'purged old unused (40 days) snapshots from maven repo'
+    local days=${1:-40}
+    find $HOME/.m2/repository -name '*SNAPSHOT*' ! -atime -${days}d -print -delete
+    echo "$? purged old unused (${days} days) snapshots from maven repo"
 }
 
 cleanMacPoo() {
@@ -25,5 +26,13 @@ cleanMacPoo() {
 
 # lists processes listening on tcp ports
 listeners() {
-    lsof -nP -i4TCP | grep LISTEN
+    lsof -i -P -n -sTCP:LISTEN $@
+}
+
+# starts an http server with docroot in the current directory
+server () 
+{ 
+    local host=`hostname`;
+    local port="${1:-8888}";
+    ( sleep 1 && open "http://${host}:${port}/" ) & python -m SimpleHTTPServer "$port"
 }
