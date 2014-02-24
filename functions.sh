@@ -1,3 +1,7 @@
+# like which but works with functions and aliases too
+wot() {
+    which $1 || declare -f $1 || alias $1
+}
 
 # cat which - print the source of an executable on the path by name
 cw() {
