@@ -1,15 +1,16 @@
+# like which but works with functions and aliases too
 wot() {
-    # like which but works with functions and aliases too
-    which $1 || declare -f $1 || alias $1
+    local it=$1
+    declare -f $it || (e=`alias $it 2>&1` && echo $e) || which $it
 }
 
+# cat which - print the source of an executable on the path by name
 cw() {
-    # cat which - print the source of an executable on the path by name
     cat `which $1`
 }
 
+# ps grep - grep for a running process but not "grep"
 psg() {
-    # ps grep - grep for a running process but not "grep"
     ps aux |grep $1 |grep -v grep
 }
 
@@ -28,21 +29,20 @@ cleanMacPoo() {
     fi
 }
 
+# lists processes listening on tcp ports
 listeners() {
-    # lists processes listening on tcp ports
     lsof -i -P -n -sTCP:LISTEN $@
 }
 
-server () 
-{ 
-    # starts an http server with docroot in the current directory
+# starts an http server with docroot in the current directory
+server () { 
     local host=`hostname`;
     local port="${1:-8888}";
     ( sleep 1 && open "http://${host}:${port}/" ) & python -m SimpleHTTPServer "$port"
 }
 
+# adds colour
 man() {
-    # adds colour
     env LESS_TERMCAP_mb=$'\E[01;31m' \
     LESS_TERMCAP_md=$'\E[01;38;5;74m' \
     LESS_TERMCAP_me=$'\E[0m' \
