@@ -5,4 +5,10 @@ else
 
     #aliases
     alias gs='git status'
+    alias gp='git pull'
+    alias grep='grep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias ls='ls -G'
+    alias ll='ls -l'
+    export LSCOLORS="ExfxcxdxBxegedabagacad" #made dirs and archives lighter by using caps E and B, man ls for voodoo
 fi
