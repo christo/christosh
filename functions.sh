@@ -4,6 +4,10 @@ wot() {
     declare -f $it || (e=`alias $it 2>&1` && echo $e) || which $it
 }
 
+epfl() {
+    vim -o ~/.bash_profile ~/.bashrc
+}
+
 # cat which - print the source of an executable on the path by name
 cw() {
     cat `which $1`
