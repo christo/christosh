@@ -61,3 +61,7 @@ pigs() {
     # which processes are consuming most cpu?
     ps auxrww | head -n 5
 }
+
+mvno() {
+    mvn -o $@
+}
