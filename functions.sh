@@ -8,6 +8,10 @@ epfl() {
     vim -o ~/.bash_profile ~/.bashrc
 }
 
+cvlc() {
+    /Applications/VLC.app/Contents/MacOS/VLC -I rc $@
+}
+
 # cat which - print the source of an executable on the path by name
 cw() {
     cat `which $1`
@@ -32,6 +36,16 @@ cleanMacPoo() {
         find $1 -name '._*' -o -name '.Spotlight-*' -o -name '.fseventsd' -print -delete
     fi
 }
+
+mcis() {
+    mvn clean install -DskipTests $@
+    cowbell
+}
+
+soma() {
+    local playlist="${1:-dronezone}"
+    cvlc http://somafm.com/${playlist}.pls
+}  
 
 # lists processes listening on tcp ports
 listeners() {

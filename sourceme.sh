@@ -10,6 +10,5 @@ else
     alias egrep='egrep --color=auto'
     alias ls='ls -G'
     alias ll='ls -l'
-    alias mcis='mvn clean install -DskipTests'
     export LSCOLORS="ExfxcxdxBxegedabagacad" #made dirs and archives lighter by using caps E and B, man ls for voodoo
 fi
