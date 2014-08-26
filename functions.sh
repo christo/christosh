@@ -25,7 +25,7 @@ psg() {
 }
 
 cleanMavenSnapshots() {
-    local days=${1:-40}
+    local days=${1:-30}
     find $HOME/.m2/repository -name '*SNAPSHOT*' ! -atime -${days}d -print -delete
     echo "$? purged old unused (${days} days) snapshots from maven repo"
 }
