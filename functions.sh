@@ -4,10 +4,12 @@ wot() {
     declare -f $it || (e=`alias $it 2>&1` && echo $e) || which $it
 }
 
+#edit profile files
 epfl() {
     vim -o ~/.bash_profile ~/.bashrc
 }
 
+#command line media player, good for console streaming radio
 cvlc() {
     /Applications/VLC.app/Contents/MacOS/VLC -I rc $@
 }
@@ -37,14 +39,34 @@ cleanMacPoo() {
     fi
 }
 
+#diskfull root filesystem percentage only
+dfull() {
+    df / | tail -n 1 | perl -ne '/((\S+\s+){8})(\S+\s+)/ && print"$2\n"'
+}  
+
 mcis() {
     mvn clean install -DskipTests $@
     cowbell
 }
 
+#somafm.com has many streaming radio shows
 soma() {
-    local playlist="${1:-dronezone}"
-    cvlc http://somafm.com/${playlist}.pls
+    if [[ -z "$1" ]]; then
+       cat <<ENDO
+        usage: soma <showname>
+        e.g.: 
+
+        soma groovesalad
+        soma dronezone
+        soma dubstep
+        soma deepspaceone
+        soma missioncontrol
+        soma lush
+ENDO
+    
+    else
+        cvlc "http://somafm.com/$1.pls"
+    fi
 }  
 
 # lists processes listening on tcp ports
