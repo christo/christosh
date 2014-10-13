@@ -1,0 +1,2 @@
+#!/bin/bash
+groovy -e 's=javax.sound.midi.MidiSystem.synthesizer;s.open();c=s.channels[9];c.noteOn(56 ,99);Thread.sleep(100);c.noteOff(96);s.close()' >/dev/null 2>&1

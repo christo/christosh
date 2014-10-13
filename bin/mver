@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#gets the version out of a maven project
+if [[ -e project.xml ]]; then 
+    # maven 1
+    perl -ne "/<currentVersion>(.*)<\/currentVersion>/ and print \"$1\n\";" project.xml
+else
+# mvn pom.xml
+    groovy -e 'println new XmlSlurper().parse(new File("pom.xml")).version'
+fi 
