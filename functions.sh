@@ -49,7 +49,13 @@ mcis() {
     cowbell
 }
 
+alias radio='soma'
 #somafm.com has many streaming radio shows
+# TODO make this "music" or "radio" instead of just soma and have ~/.music config for stream sources etc
+# TODO soma help shows all the stations known
+# TODO soma also logs requested stations keeping a count so they can be sorted by playcount
+# TODO soma -u update the list of available shows using the somafm.py script
+# TODO bash completion
 soma() {
     if [[ -z "$1" ]]; then
        cat <<ENDO
@@ -100,4 +106,13 @@ pigs() {
 
 mvno() {
     mvn -o $@
+}
+
+# automated maven release 
+mrelease() {
+    mvn -B release:prepare && mvn release:perform
+}
+
+catmf() {
+    unzip -c $1 META-INF/MANIFEST.MF
 }

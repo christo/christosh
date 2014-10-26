@@ -1,7 +1,12 @@
 #!/bin/sh
   
 # check for where the latest version of IDEA is installed
-IDEA=`ls -1d /Volumes/ssd/Applications/IntelliJ\ * | tail -n1`
+if [[ -e /Volumes/ssd/Applications ]]; then 
+    IDEA=`ls -1d /Volumes/ssd/Applications/IntelliJ\ * | tail -n1`
+else
+    IDEA=`ls -1d /Applications/IntelliJ\ * | tail -n1`
+fi
+
 wd=`pwd`
  
  
