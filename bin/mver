@@ -5,6 +5,6 @@ if [[ -e project.xml ]]; then
     # maven 1
     perl -ne "/<currentVersion>(.*)<\/currentVersion>/ and print \"$1\n\";" project.xml
 else
-# mvn pom.xml
-    groovy -e 'println new XmlSlurper().parse(new File("pom.xml")).version'
+    # mvn pom.xml
+    perl -MXML::Simple -e 'print XMLin("pom.xml")->{"version"} . "\n"'
 fi 
