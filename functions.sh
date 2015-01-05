@@ -1,3 +1,13 @@
+# sends pasteboard (pb) contents to the clipboard of the target osx machine
+pbto() {
+    pbpaste | ssh "$1" pbcopy
+}
+
+# receives pasteboard (pb) contents from the clipboard of the target osx machine
+pbfrom() {
+    ssh "$1" pbpaste | pbcopy
+}
+
 # like which but works with functions and aliases too
 wot() {
     local it=$1
@@ -49,17 +59,17 @@ mcis() {
     cowbell
 }
 
-alias radio='soma'
+alias soma='radio'
 #somafm.com has many streaming radio shows
 # TODO make this "music" or "radio" instead of just soma and have ~/.music config for stream sources etc
 # TODO soma help shows all the stations known
 # TODO soma also logs requested stations keeping a count so they can be sorted by playcount
 # TODO soma -u update the list of available shows using the somafm.py script
 # TODO bash completion
-soma() {
+radio() {
     if [[ -z "$1" ]]; then
        cat <<ENDO
-        usage: soma <showname>
+        usage: $FUNCNAME <showname>
         e.g.: 
 
         soma groovesalad
@@ -71,7 +81,7 @@ soma() {
 ENDO
     
     else
-        cvlc "http://somafm.com/$1.pls"
+        /Applications/VLC.app/Contents/MacOS/VLC -I rc "http://somafm.com/$1.pls"
     fi
 }  
 
