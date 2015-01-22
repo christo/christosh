@@ -59,32 +59,6 @@ mcis() {
     cowbell
 }
 
-alias soma='radio'
-#somafm.com has many streaming radio shows
-# TODO make this "music" or "radio" instead of just soma and have ~/.music config for stream sources etc
-# TODO soma help shows all the stations known
-# TODO soma also logs requested stations keeping a count so they can be sorted by playcount
-# TODO soma -u update the list of available shows using the somafm.py script
-# TODO bash completion
-radio() {
-    if [[ -z "$1" ]]; then
-       cat <<ENDO
-        usage: $FUNCNAME <showname>
-        e.g.: 
-
-        soma groovesalad
-        soma dronezone
-        soma dubstep
-        soma deepspaceone
-        soma missioncontrol
-        soma lush
-ENDO
-    
-    else
-        /Applications/VLC.app/Contents/MacOS/VLC -I rc "http://somafm.com/$1.pls"
-    fi
-}  
-
 # lists processes listening on tcp ports
 listeners() {
     lsof -i -P -n -sTCP:LISTEN $@
