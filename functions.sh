@@ -1,3 +1,8 @@
+# waits for the given pid to finish
+waitfor() {
+    while ( ps $1 >/dev/null ); do sleep 1; done
+}
+
 # sends pasteboard (pb) contents to the clipboard of the target osx machine
 pbto() {
     pbpaste | ssh "$1" pbcopy
