@@ -35,6 +35,7 @@ cw() {
 }
 
 # ps grep - grep for a running process but not "grep"
+# see also psgrep
 psg() {
     ps aux |grep $1 |grep -v grep
 }
@@ -58,6 +59,11 @@ cleanMacPoo() {
 dfull() {
     df / | tail -n 1 | perl -ne '/((\S+\s+){8})(\S+\s+)/ && print"$2\n"'
 }  
+
+# disk free root fs human readable
+dfree() {
+     df -h / | tail -1 | perl -ne '/(\S+\s+){3}(\S+)/ && print"$2\n"'
+}
 
 mcis() {
     mvn clean install -DskipTests $@
