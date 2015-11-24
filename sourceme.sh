@@ -14,6 +14,3 @@ else
     export PATH="$CHRISTOSH_HOME/bin:$PATH"
 fi
 
-echo \"Between stimulus and response, there is a space. 
-echo " In that space is our power to choose our response."
-echo " In our response lies our growth and our freedom.\""
