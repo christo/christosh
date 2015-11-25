@@ -3,6 +3,14 @@ waitfor() {
     while ( ps $1 >/dev/null ); do sleep 1; done
 }
 
+unmountvol() {
+    if [[ -z "$1" ]]; then
+        echo 'usage: unmountvol <volumename>'
+    else
+        diskutil unmount `df |egrep "/Volumes/\Q$1\E" |cut -d\  -f 1`
+    fi
+}
+
 # sends pasteboard (pb) contents to the clipboard of the target osx machine
 pbto() {
     pbpaste | ssh "$1" pbcopy
