@@ -1,8 +1,10 @@
 #!/bin/bash
 
-if [ -e dupefind.md5.txt ]; then
-    rm dupefind.md5.txt
+MD5FILE='dupefind.md5list.txt'
+
+if [ -e MD5FILE ]; then
+    rm $MD5FILE
 fi
-find . -type f -exec md5 -r {} >>dupefind.md5.txt \;
-cat dupefind.md5.txt |cut -f1 -d\ |sort |uniq -d >dupes.txt
-fgrep -f dupes.txt dupefind.md5.txt |sort 
+find . -type f -exec md5 -r {} >>$MD5FILE \;
+cat $MD5FILE |cut -f1 -d\ |sort |uniq -d >dupes.txt
+fgrep -f dupes.txt $MD5FILE |sort 

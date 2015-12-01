@@ -3,20 +3,24 @@
 SYNCFROM='/Volumes/Chris2T/techtv/'
 SYNCTO='/Volumes/external/techtv/'
 
+h=`hostname -s`
 
 if [[ -d $SYNCFROM && -d $SYNCTO ]]
 then
-    echo local sync
+    echo local sync on kb
     rsync -vau --progress --delete-after $SYNCFROM $SYNCTO
 else
-    echo need drives Chris2T and external to both be mounted or need to implement network sync
-    if [[ "`hostname -s`" == "kb" ]] 
+    echo attempting network sync
+    if [[ "$h" == "kb" ]] 
     then
-        ping -c 2 water && rsync -vazu --progress water:$SYNCFROM $SYNCTO
+        ping -c 2 water 2>&1 >/dev/null && rsync -vazu --progress water:$SYNCFROM $SYNCTO
     elif [[ -d $SYNCFROM ]]
     then
-        ping -c 2 kb && rsync -vazu --progress $SYNCFROM kb:$SYNCTO
+        ping -c 2 kb 2>&1 >/dev/null && rsync -vazu --progress $SYNCFROM kb:$SYNCTO
     else
+        test -d $SYNCFROM && echo -n " $SYNCFROM is mounted"
+        test -d $SYNCTO && echo -n " $SYNCTO is mounted"
+        echo " host is $d"
         echo no can do
     fi
 fi
