@@ -16,7 +16,7 @@ else
         ping -c 2 water 2>&1 >/dev/null && rsync -vazu --progress water:$SYNCFROM $SYNCTO
     elif [[ -d $SYNCFROM ]]
     then
-        ping -c 2 kb 2>&1 >/dev/null && rsync -vazu --progress $SYNCFROM kb:$SYNCTO
+        ping -c 2 kb 2>&1 >/dev/null && rsync -vazu --progress $SYNCFROM christo@kb:$SYNCTO
     else
         test -d $SYNCFROM && echo -n " $SYNCFROM is mounted"
         test -d $SYNCTO && echo -n " $SYNCTO is mounted"
