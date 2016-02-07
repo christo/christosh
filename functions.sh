@@ -3,6 +3,7 @@ waitfor() {
     while ( ps $1 >/dev/null ); do sleep 1; done
 }
 
+# unmounts a volume by name (note usb drives don't seem to power down)
 unmountvol() {
     if [[ -z "$1" ]]; then
         echo 'usage: unmountvol <volumename>'
@@ -22,6 +23,7 @@ pbfrom() {
 }
 
 # like which but works with functions and aliases too
+# i've since been informed about the builtin "type" which should possibly be preferred 
 wot() {
     local it=$1
     declare -f $it || (e=`alias $it 2>&1` && echo $e) || which $it
@@ -39,7 +41,7 @@ cvlc() {
 
 # cat which - print the source of an executable on the path by name
 cw() {
-    cat `which $1`
+    cat `which "$1"`
 }
 
 # ps grep - grep for a running process but not "grep"
@@ -71,6 +73,11 @@ dfull() {
 # disk free root fs human readable
 dfree() {
      df -h / | tail -1 | perl -ne '/(\S+\s+){3}(\S+)/ && print"$2\n"'
+}
+
+#sorted size totals in megs of given dir tree (or current)
+megs() {
+    du -m "${1:-.}" |sort -n
 }
 
 mcis() {
