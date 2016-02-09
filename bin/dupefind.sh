@@ -7,4 +7,4 @@ if [ -e MD5FILE ]; then
 fi
 find . -type f -exec md5 -r {} >>$MD5FILE \;
 cat $MD5FILE |cut -f1 -d\ |sort |uniq -d >dupes.txt
-fgrep -f dupes.txt $MD5FILE |sort 
+fgrep -f dupes.txt $MD5FILE |sort | tee dupefind.dupefiles.txt
