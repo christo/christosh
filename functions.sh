@@ -126,3 +126,11 @@ mrelease() {
 catmf() {
     unzip -c $1 META-INF/MANIFEST.MF
 }
+
+# how slammed am i?
+# show recent load averages as comes from uptime as a sparkline
+# shows sparkline if you have the spark program
+ups() {
+    l=`uptime | perl -p -e 's/.*averages: (.*)/$1/'`
+    which spark >>/dev/null && echo $l |spark || echo $l
+}
