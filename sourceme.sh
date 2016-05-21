@@ -4,6 +4,7 @@ else
     . $CHRISTOSH_HOME/functions.sh
 
     #aliases
+    alias feen='osascript "$CHRISTOSH_HOME/applescript/toggle-caffiene.applescript"'
     alias gs='git status'
     alias gp='git pull'
     alias grep='grep --color=auto'
