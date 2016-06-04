@@ -109,8 +109,8 @@ man() {
     man "$@"
 }
 
+# which processes are consuming most cpu?
 pigs() {
-    # which processes are consuming most cpu?
     ps auxrww | head -n 5
 }
 
@@ -133,4 +133,9 @@ catmf() {
 ups() {
     l=`uptime | perl -p -e 's/.*averages: (.*)/$1/'`
     which spark >>/dev/null && echo $l |spark || echo $l
+}
+
+# do a git pull on every repo under the current directory tree
+gpullr() {
+    find . -name '.git' -type d | perl -pe 's/(.*)\.git/$1/' |xargs -I % git -C % pull
 }
