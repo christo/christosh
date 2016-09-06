@@ -135,7 +135,7 @@ ups() {
     which spark >>/dev/null && echo $l |spark || echo $l
 }
 
-# do a git pull on every repo under the current directory tree
+# do a git pull on repos under the current directory tree unless they're already fresh
 gpullr() {
-    find . -name '.git' -type d | perl -pe 's/(.*)\.git/$1/' |xargs -I % git -C % pull
+    find . -name '.git' -maxdepth 5 -type d -mtime +1 | perl -pe 's/(.*)\.git/$1/' |xargs -I % bash -c 'echo $0 && git -C "$0" pull' % 
 }
