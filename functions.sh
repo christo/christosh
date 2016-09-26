@@ -137,5 +137,11 @@ ups() {
 
 # do a git pull on repos under the current directory tree unless they're already fresh
 gpullr() {
-    find . -name '.git' -maxdepth 5 -type d -mtime +1 | perl -pe 's/(.*)\.git/$1/' |xargs -I % bash -c 'echo $0 && git -C "$0" pull' % 
+    # TODO trying to only do a pull if there is a remote as reported by zero exit from: git -C "$0" remote -v
+    # GIT_TERMINAL_PROMPT=0 find . -name '.git' -maxdepth 5 -type d -mtime +1 | perl -pe 's/(.*)\.git/$1/' |xargs -I % bash -c '$(git -C "$0" remote -v) && echo $0 && git -C "$0" pull' % 
+    GIT_TERMINAL_PROMPT=0 find . -name '.git' -maxdepth 5 -type d -mtime +1 | perl -pe 's/(.*)\.git/$1/' |xargs -I % bash -c 'echo $0 && git -C "$0" pull' % 
+}
+
+mcd() {
+    mkdir -p "$1" && cd "$1"
 }
