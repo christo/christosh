@@ -139,7 +139,8 @@ ups() {
 gpullr() {
     # TODO trying to only do a pull if there is a remote as reported by zero exit from: git -C "$0" remote -v
     # GIT_TERMINAL_PROMPT=0 find . -name '.git' -maxdepth 5 -type d -mtime +1 | perl -pe 's/(.*)\.git/$1/' |xargs -I % bash -c '$(git -C "$0" remote -v) && echo $0 && git -C "$0" pull' % 
-    GIT_TERMINAL_PROMPT=0 find . -name '.git' -maxdepth 5 -type d -mtime +1 | perl -pe 's/(.*)\.git/$1/' |xargs -I % bash -c 'echo $0 && git -C "$0" pull' % 
+    for i in *; do find "$i" -name '.git' -maxdepth 6 -type d | perl -pe 's/(.*)\.git/$1/' |xargs -I % bash -c 'echo $0 && GIT_TERMINAL_PROMPT=0 git -C "$0" pull' % ; done
+    #GIT_TERMINAL_PROMPT=0 find . -name '.git' -maxdepth 5 -type d -mtime +1 | perl -pe 's/(.*)\.git/$1/' |xargs -I % bash -c 'echo $0 && git -C "$0" pull' % 
 }
 
 mcd() {
