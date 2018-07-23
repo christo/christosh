@@ -47,7 +47,7 @@ cw() {
 # ps grep - grep for a running process but not "grep"
 # see also psgrep
 psg() {
-    ps aux |grep $1 |grep -v grep
+    ps aux |grep $@ |grep -v grep
 }
 
 cleanMavenSnapshots() {
@@ -67,7 +67,7 @@ cleanMacPoo() {
 
 #diskfull root filesystem percentage only
 dfull() {
-    df / | tail -n 1 | perl -ne '/((\S+\s+){8})(\S+\s+)/ && print"$2\n"'
+    df / | tail -n 1 | perl -ne '/((\S+\s+){5})(\S+\s+)/ && print"$2\n"'
 }  
 
 # disk free root fs human readable
@@ -147,4 +147,34 @@ mcd() {
     mkdir -p "$1" && cd "$1"
 }
 
+# VPNs: 
+# AWS Sydney 
+# AWS VPN
+function vpn-connect {
+/usr/bin/env osascript <<-EOF
+tell application "System Events"
+        tell current location of network preferences
+                set VPN to service "AWS Sydney" 
+                if exists VPN then connect VPN
+                repeat while (current configuration of VPN is not connected)
+                    delay 1
+                end repeat
+        end tell
+end tell
+EOF
+}
+
+function vpn-disconnect {
+/usr/bin/env osascript <<-EOF
+tell application "System Events"
+        tell current location of network preferences
+                set VPN to service "AWS Sydney" 
+                if exists VPN then disconnect VPN
+        end tell
+end tell
+return
+EOF
+}
+alias vpnu='vpn-connect'
+alias vpnd='vpn-disconnect'
 alias remotes='git remote -v'
