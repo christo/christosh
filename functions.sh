@@ -147,6 +147,10 @@ mcd() {
     mkdir -p "$1" && cd "$1"
 }
 
+maketargets() {
+    make -qp|perl -ne's/^(\w[^#\s.\t:]+):/$1/ && print "$1\n"'|sort -u
+}
+
 # VPNs: 
 # AWS Sydney 
 # AWS VPN
