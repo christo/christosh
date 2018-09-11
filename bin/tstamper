@@ -2,5 +2,5 @@
 
 # prefixes input with timestamps
 BEGIN { use POSIX; }
-print strftime( "%F %T ", localtime), $_;
+print strftime("%F %T ", localtime), $_;
 
