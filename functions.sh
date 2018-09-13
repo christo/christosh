@@ -22,6 +22,21 @@ pbfrom() {
     ssh "$1" pbpaste | pbcopy
 }
 
+# do something to the contents of the clipboard
+pbdo() {
+    cmd=$@
+    pbpaste | eval $cmd  | pbcopy
+}
+
+# filter to normalise track descriptors to make suitable for search
+# tracks typically have a form like this:
+#   Track Name (Foobar Mix) - Artist Name
+# the transformed result would be:
+#   Track Name Foobar Mix Artist Name
+trackclean() {
+    perl -pe's/[\W\s]+/ /g and s/(^\s+|\s+$)//' 
+}
+
 # like which but works with functions and aliases too
 # i've since been informed about the builtin "type" which should possibly be preferred 
 wot() {
@@ -150,6 +165,7 @@ mcd() {
 maketargets() {
     make -qp|perl -ne's/^(\w[^#\s.\t:]+):/$1/ && print "$1\n"'|sort -u
 }
+
 
 # VPNs: 
 # AWS Sydney 
