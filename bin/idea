@@ -4,7 +4,7 @@
 if [[ -e /Volumes/ssd/Applications ]]; then 
     IDEA=`ls -1d /Volumes/ssd/Applications/IntelliJ\ * | tail -n1`
 else
-    IDEA=`ls -1d /Applications/IntelliJ\ * | tail -n1`
+    IDEA=`ls -1rtd /Applications/IntelliJ\ * | tail -n1`
 fi
 
 wd=`pwd`
