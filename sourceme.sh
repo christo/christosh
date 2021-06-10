@@ -1,3 +1,4 @@
+
 if [[ -z "$CHRISTOSH_HOME" ]]; then
     echo You need to define \$CHRISTOSH_HOME
 else 
@@ -14,4 +15,9 @@ else
     export LSCOLORS="ExfxcxdxBxegedabagacad" #made dirs and archives lighter by using caps E and B, man ls for voodoo
     export PATH="$CHRISTOSH_HOME/bin:$PATH"
 fi
+
+
+for i in /Applications/VICE/*.app; do
+	alias ${i:18:-5}=open -a $i
+done
 
