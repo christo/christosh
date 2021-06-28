@@ -16,7 +16,7 @@ function grepdev() {
 }
 
 grepdev -i usb "smart guess:"
-grepdev -vi '(disk|Bluetooth|BIGJAMBOX|Bose|autofs|console)' "filtered:"
+grepdev -vi '(disk|Bluetooth|BIGJAMBOX|Bose|autofs|console|null|rdisk|vbox)' "filtered:"
 grepdev -i . raw
 
 #echo smart guess:
