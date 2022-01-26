@@ -1,11 +1,25 @@
 
+
+# zsh
+
+unameOut="$(uname -s)"
+case "${unameOut}" in
+	Linux*)	 machine="Linux" ;;
+	Darwin*) machine="Mac" ;;
+	CYGWIN*) machine="Cygwin" ;;
+	MINGW*)  machine="MinGw" ;;
+	*)       machine="UNKNOWN:${unameOut}"
+esac
+
 if [[ -z "$CHRISTOSH_HOME" ]]; then
     echo You need to define \$CHRISTOSH_HOME
 else 
     . $CHRISTOSH_HOME/functions.sh
 
     #aliases
-    alias feen='osascript "$CHRISTOSH_HOME/applescript/toggle-caffiene.applescript"'
+    if [[ "$machine" == "Mac" ]]; then
+	    alias feen='osascript "$CHRISTOSH_HOME/applescript/toggle-caffiene.applescript"'
+    fi
     alias gs='git status'
     alias gp='git pull'
     alias grep='grep --color=auto'
@@ -16,8 +30,8 @@ else
     export PATH="$CHRISTOSH_HOME/bin:$PATH"
 fi
 
-
-for i in /Applications/VICE/*.app; do
-	alias ${i:18:-5}=open -a $i
-done
-
+if [[ "$machine" == "Mac" ]]; then
+	for i in /Applications/VICE/*.app; do
+		alias ${i:18:-5}=open -a $i
+	done
+fi
