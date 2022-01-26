@@ -1,6 +1,7 @@
 #!/usr/bin/perl -nl 
 
 # prefixes input with timestamps
+# pipe stdin into it
 BEGIN { use POSIX; }
 print strftime("%F %T ", localtime), $_;
 
