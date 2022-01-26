@@ -164,10 +164,12 @@ gpullr() {
     grepos | xargs -n 1 -P 3 -I % bash -c 'echo $0 && GIT_TERMINAL_PROMPT=0 git -C "$0" pull' %
 }
 
+# make a dir (if it doesn't already exist) and cd into it
 mcd() {
     mkdir -p "$1" && cd "$1"
 }
 
+# list make targets
 maketargets() {
     make -qp|perl -ne's/^(\w[^#\s.\t:]+):/$1/ && print "$1\n"'|sort -u
 }
