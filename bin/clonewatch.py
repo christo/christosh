@@ -28,7 +28,11 @@ LOG=os.path.join(CHECKOUT_BASEDIR, "clonewatch.log")
 def parse_repo(s):
     return re.search(PARSE_REPO_URL, s)
 
+def update_console(num_running):
+    print("   \x1b[2Kdownloads active: {}".format(num_running), end='\r')
+
 def main():
+    print("check log file at {}".format(LOG))
     logging.basicConfig(filename=LOG, format='%(asctime)s %(levelname)s %(message)s', level=logging.DEBUG)
     logging.info("startup")
     previous_clipboard = ""
@@ -40,7 +44,6 @@ def main():
             parsed = parse_repo(url)
             if parsed:
                 user, repo = parsed.group(1, 2)
-                logging.info("cloning {} by {}: {}".format(repo, user, url))
                 # the following can fail, but we probably want to die in that case
                 user_basedir = os.path.join(CHECKOUT_BASEDIR, user)
                 os.makedirs(name=user_basedir, mode=0o755, exist_ok=True)
@@ -49,10 +52,9 @@ def main():
                     logging.warning("repo dir {} exists, not cloning {}".format(repo_dir, url))
                 else:
                     gits.append(Popen(["git", "clone", "-q", url, repo_dir], stdout=DEVNULL, stderr=DEVNULL))
-                    print("running git clone {} {}".format(url, repo_dir))
+                    logging.info("cloning {} by {}: {}".format(repo, user, url))
             else:
                 logging.warning("not parse {}".format(url))
-                print("not parse {}".format(url), file = sys.stderr)
 
         time.sleep(INTERVAL)
         # TODO fix race condition
@@ -64,6 +66,7 @@ def main():
                 logging.info("fail code {} for {}".format(x.poll(), x.args))
         # remove completed processes
         gits = [x for x in gits if x.poll() == None]
+        update_console(len(gits))
 
 
 
