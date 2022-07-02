@@ -21,7 +21,7 @@ import time
 # https://docs.python.org/dev/library/concurrent.futures.html#threadpoolexecutor-example
 
 INTERVAL=1.5
-PARSE_REPO_URL= r'^git@github\.com:([^/]+)/(.*?)(\.git)?$'
+PARSE_REPO_URL= r'^(?:https://|git@)git(?:hu|la)b\.com:([^/]+)/(.*?)(\.git)?$'
 CHECKOUT_BASEDIR=expanduser("~/src/other/")
 LOG=os.path.join(CHECKOUT_BASEDIR, "clonewatch.log")
 
