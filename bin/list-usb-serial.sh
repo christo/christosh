@@ -17,11 +17,5 @@ function grepdev() {
 
 grepdev -i usb "smart guess:"
 grepdev -vi '(disk|Bluetooth|BIGJAMBOX|Bose|autofs|console|null|rdisk|vbox)' "filtered:"
-grepdev -i . raw
+grepdev -i . raw:
 
-#echo smart guess:
-#ls -lt /dev |grep '^c' |grep -i usb |head -n 5
-#echo filtered:
-#ls -lt /dev |grep '^c' |egrep -vi '(disk|Bluetooth|BIGJAMBOX|Bose|autofs|console)' |head -n 8
-#echo raw:
-#ls -lt /dev |grep '^c' |head -n 8

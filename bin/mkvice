@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+for i in /Applications/VICE/*.app; do
+	alias $i[20,-5]="open -a $i"
+done
