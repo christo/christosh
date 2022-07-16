@@ -1,7 +1,4 @@
-tap "ahacop/retrodev"
 tap "atlassian/tap"
-tap "cartr/qt4"
-tap "dartsim/dart"
 tap "ethereum/ethereum"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -40,14 +37,10 @@ brew "cabal-install"
 brew "gcc"
 # AV1 decoder targeted to be small and fast
 brew "dav1d"
-# GNU Ubiquitous Intelligent Language for Extensions
-brew "guile"
 # GNU Transport Layer Security (TLS) Library
 brew "gnutls"
 # High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
-# VP8/VP9 video codec
-brew "libvpx"
 # Package for scientific computing with Python
 brew "numpy"
 # Open source computer vision library
@@ -213,6 +206,7 @@ cask "mame"
 cask "virtualbox"
 # Desktop client for WhatsApp
 cask "whatsapp"
+cask "iterm2"
 mas "Cathode", id: 499233976
 mas "Flycut", id: 442160987
 mas "iMovie", id: 408981434
