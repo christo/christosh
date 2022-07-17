@@ -174,7 +174,9 @@ brew "tmux"
 # Anonymizing overlay network for TCP
 brew "tor"
 # Extract, view, and test RAR archives
-brew "unrar"
+# unrar no longer supported by homebrew due to licensing use 7z for rar archives as per:
+# https://github.com/Homebrew/discussions/discussions/285
+#brew "unrar"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Extensible IRC client
@@ -196,18 +198,19 @@ cask "eqmac"
 # Web browser
 cask "firefox"
 cask "font-fira-code"
-cask "google-earth"
 # Software-defined radio receiver powered by GNU Radio and Qt
 cask "gqrx"
 # Hex editor focussing on speed
 cask "hex-fiend"
 cask "mame"
-# Virtualizer for x86 hardware
-cask "virtualbox"
+# Virtualizer for x86 hardware (does not work on apple silicon as of 220220716)
+#cask "virtualbox"
 # Desktop client for WhatsApp
 cask "whatsapp"
 cask "iterm2"
-mas "Cathode", id: 499233976
+cask "caffeine"
+# retro terminal emulator won't install as of 20220716
+#mas "Cathode", id: 499233976
 mas "Flycut", id: 442160987
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
