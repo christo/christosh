@@ -75,6 +75,7 @@ brew "gdb"
 brew "gh"
 # Distributed revision control system
 brew "git"
+brew "zsh-syntax-highlighting"
 # Git extension for versioning large files
 brew "git-lfs"
 # SDK for signal processing blocks to implement software radios
@@ -129,6 +130,8 @@ brew "neofetch"
 brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
+# node version manager
+brew "nvm"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Cross-platform library for real-time MIDI I/O
@@ -221,3 +224,4 @@ mas "Slack", id: 803453959
 mas "The Witness", id: 1167726849
 mas "Things", id: 904280696
 mas "Xcode", id: 497799835
+mas "1Password 7 - Password Manager", id: 1333542190
