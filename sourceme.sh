@@ -30,7 +30,7 @@ else
     export PATH="$CHRISTOSH_HOME/bin:$PATH"
 fi
 
-if [[ "$machine" == "Mac" ]]; then
+if [[ "$machine" == "Mac" && -d /Applications/VICE ]]; then
 	for i in /Applications/VICE/*.app; do
 		alias ${i:18:-5}=open -a $i
 	done
