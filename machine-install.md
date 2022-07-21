@@ -3,7 +3,6 @@
 
  * Mac: brew from (https://brew.sh/)
     * then use Brewfile with `brew bundle --file foo.Brewfile`
- * Mac: spectacle
  * arduino
  * processing
 
