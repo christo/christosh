@@ -200,12 +200,16 @@ cask "docker"
 cask "eqmac"
 # Web browser
 cask "firefox"
+# very nice coding and terminal font with ligature support
 cask "font-fira-code"
 # Software-defined radio receiver powered by GNU Radio and Qt
 cask "gqrx"
 # Hex editor focussing on speed
 cask "hex-fiend"
+# retro emulation
 cask "mame"
+# chat
+cask "discord"
 # Virtualizer for x86 hardware (does not work on apple silicon as of 220220716)
 #cask "virtualbox"
 # Desktop client for WhatsApp
