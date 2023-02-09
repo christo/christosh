@@ -218,6 +218,7 @@ cask "iterm2"
 cask "caffeine"
 cask "rectangle"
 cask "discord"
+cask "vlc"
 # retro terminal emulator won't install as of 20220716
 #mas "Cathode", id: 499233976
 mas "Flycut", id: 442160987
