@@ -23,7 +23,7 @@ import time
 
 INTERVAL=1.5
 PARSE_REPO_URL= r'^(?:https://|git@)git(?:hu|la)b\.com:([^/]+)/(.*?)(\.git)?$'
-PARSE_GITHUB_URL = r'^https://github\.com/([^/]+)/([^/]+)$'
+PARSE_GITHUB_URL = r'^https://github\.com/([^/]+)/([^/?]+)'
 CHECKOUT_BASEDIR=expanduser("~/src/other/")
 LOG=os.path.join(CHECKOUT_BASEDIR, "clonewatch.log")
 
