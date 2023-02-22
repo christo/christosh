@@ -41,14 +41,15 @@ trackclean() {
 }
 
 # like which but works with functions and aliases too
-# i've since been informed about the builtin "type" which should possibly be preferred 
+# i've since been informed about the builtin "type" which should 
+# possibly be preferred 
 wot() {
     local it=$1
     declare -f $it || (e=`alias $it 2>&1` && echo $e) || which $it
 }
 
 #edit profile files
-# TODO update for zsh
+# TODO update for zsh or maybe detect current shell?
 epfl() {
     vim -o ~/.bash_profile ~/.bashrc
 }
@@ -135,6 +136,7 @@ pigs() {
     ps auxrww | head -n 5
 }
 
+# offline maven
 mvno() {
     mvn -o $@
 }
@@ -144,6 +146,7 @@ mrelease() {
     mvn -B release:prepare && mvn release:perform
 }
 
+# print the manifest of the given jar file
 catmf() {
     unzip -c $1 META-INF/MANIFEST.MF
 }
