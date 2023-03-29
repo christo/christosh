@@ -15,10 +15,8 @@ import re
 import sys
 import time
 
-# TODO support https urls, gitlab, bitbucket
-# TODO support deriving the git url from a github browser url
+# TODO support bitbucket
 # TODO add ThreadPoolExecutor concurrency from concurrent.futures see: 
-# NOTE: url parts are not decoded because they need to become dirs
 # https://docs.python.org/dev/library/concurrent.futures.html#threadpoolexecutor-example
 
 INTERVAL=1.5
