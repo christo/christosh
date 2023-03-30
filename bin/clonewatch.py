@@ -15,12 +15,15 @@ import re
 import sys
 import time
 
-# TODO support bitbucket, sourcehut
+# TODO support bitbucket, sourcehut: need different base dirs
 # TODO add ThreadPoolExecutor concurrency from concurrent.futures see: 
 # https://docs.python.org/dev/library/concurrent.futures.html#threadpoolexecutor-example
 
 INTERVAL=1.5
+
 PARSE_REPO_URL= r'^(?:https://|git@)git(?:hu|la)b\.com:([^/]+)/(.*?)(\.git)?$'
+PARSE_SOURCEHUT_REPO_URL = r'(?:https://git\.sr\.ht/|git@git\.sr\.ht:)~([^/]+)/([^/]+)'
+PARSE_BITBUCKET_REPO_URL = r'^(?:git clone )?(?:git@bitbucket.org:)([^/]+)/([^/]+).git$'
 PARSE_GITHUB_URL = r'^https://github\.com/([^/]+)/([^/?]+)'
 CHECKOUT_BASEDIR=expanduser("~/src/other/")
 LOG=os.path.join(CHECKOUT_BASEDIR, "clonewatch.log")
@@ -30,8 +33,12 @@ LOG=os.path.join(CHECKOUT_BASEDIR, "clonewatch.log")
 def parse_github_url(s):
     return re.search(PARSE_GITHUB_URL, s)
 
+# parses repo urls for github, gitlab, sourcehut
 def parse_repo(s):
-    return re.search(PARSE_REPO_URL, s)
+    parsed = re.search(PARSE_REPO_URL, s)
+    # parsed = parsed if parsed else re.search(PARSE_BITBUCKET_REPO_URL, s)
+    # parsed = parsed if parsed else re.search(PARSE_SOURCEHUT_REPO_URL, s)
+    return parsed
 
 # constructs a github git repo URL from user and reponame
 def github_repo(user, reponame):
