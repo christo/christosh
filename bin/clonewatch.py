@@ -34,11 +34,14 @@ def parse_github_url(s):
     return re.search(PARSE_GITHUB_URL, s)
 
 # parses repo urls for github, gitlab, sourcehut
-def parse_repo(s):
-    parsed = re.search(PARSE_REPO_URL, s)
-    # parsed = parsed if parsed else re.search(PARSE_BITBUCKET_REPO_URL, s)
-    # parsed = parsed if parsed else re.search(PARSE_SOURCEHUT_REPO_URL, s)
-    return parsed
+def parse_github_repo(s):
+    return re.search(PARSE_REPO_URL, s)
+
+def parse_bb_repo(s):
+    return re.search(PARSE_BITBUCKET_REPO_URL, s)
+
+def parse_sh_repo(s):
+    return re.search(PARSE_SOURCEHUT_REPO_URL, s)
 
 # constructs a github git repo URL from user and reponame
 def github_repo(user, reponame):
@@ -65,11 +68,19 @@ def main():
         url = pyperclip.paste().strip()
         if len(url) > 0 and url != previous_clipboard: 
             previous_clipboard = url
-            parsed = parse_repo(url)
+            subdir = "github.com"
+            parsed = parse_github_repo(url)
+            if not parsed:
+                subdir = "git.sr.ht"
+                parsed = parse_sh_repo(url)
+            if not parsed:
+                subdir = "bitbucket.org"
+                parsed = parse_bb_repo(url)
             if not parsed:
                 # try as github front-end url
                 parsed = parse_github_url(url)
                 if parsed:
+                    subdir = "github.com"
                     # rewrite URL as git
                     user, repo = parsed.group(1, 2)
                     url = github_repo(user, repo)
@@ -78,7 +89,7 @@ def main():
                 user, repo = parsed.group(1, 2)
                 latest = (user, repo)
                 # the following can fail, but we probably want to die in that case
-                user_basedir = os.path.join(CHECKOUT_BASEDIR, user)
+                user_basedir = os.path.join(os.path.join(CHECKOUT_BASEDIR, subdir), user)
                 os.makedirs(name=user_basedir, mode=0o755, exist_ok=True)
                 repo_dir = os.path.join(user_basedir, repo)
                 if os.path.exists(repo_dir):
