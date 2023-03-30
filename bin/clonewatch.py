@@ -15,7 +15,6 @@ import re
 import sys
 import time
 
-# TODO support bitbucket, sourcehut: need different base dirs
 # TODO add ThreadPoolExecutor concurrency from concurrent.futures see: 
 # https://docs.python.org/dev/library/concurrent.futures.html#threadpoolexecutor-example
 
