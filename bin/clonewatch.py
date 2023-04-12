@@ -100,7 +100,7 @@ def main():
                     logging.info("cloning {} by {}: {}".format(repo, user, url))
             else:
 
-                logging.warning("not parse {}".format(url))
+                logging.warning("not parsing clipboard")
 
         time.sleep(INTERVAL)
         # TODO fix race condition
