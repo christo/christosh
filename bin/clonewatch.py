@@ -51,10 +51,10 @@ def update_console(num_running, latest_repo):
     print("   downloads active: {}             ".format(num_running), end='\r')
 
 def git_pull(repo_dir):
-    return Popen(["git", "-C", repo_dir, "pull", "-q"], stdout=DEVNULL, stderr=DEVNULL)
+    return Popen(["git", "-C", repo_dir, "pull", "-q", "--recurse-submodules"], stdout=DEVNULL, stderr=DEVNULL)
 
 def git_clone(url, repo_dir):
-    return Popen(["git", "clone", "-q", url, repo_dir], stdout=DEVNULL, stderr=DEVNULL)
+    return Popen(["git", "clone", "-q", "--recurse-submodules", url, repo_dir], stdout=DEVNULL, stderr=DEVNULL)
 
 def main():
     print("check log file at {}\n".format(LOG))
@@ -98,9 +98,6 @@ def main():
                 else:
                     gits.append(git_clone(url, repo_dir))
                     logging.info("cloning {} by {}: {}".format(repo, user, url))
-            else:
-
-                logging.warning("not parsing clipboard")
 
         time.sleep(INTERVAL)
         # TODO fix race condition
