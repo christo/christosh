@@ -120,8 +120,6 @@ brew "mpg123"
 brew "mvnvm"
 # Open source relational database management system
 brew "mysql"
-# Netwide Assembler (NASM) is an 80x86 assembler
-brew "nasm"
 # FTP client with an advanced user interface
 brew "ncftp"
 # Fast, highly customisable system info script
@@ -164,8 +162,6 @@ brew "streamripper"
 brew "subversion"
 # Open source continuous file synchronization application
 brew "syncthing", restart_service: true
-# Multi pass optimizing macro assembler for the 65xx series of processors
-brew "tass64"
 # User interface to the TELNET protocol
 brew "telnet"
 # Send macOS User Notifications from the command-line
@@ -182,8 +178,6 @@ brew "tor"
 #brew "unrar"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
-# Extensible IRC client
-brew "weechat"
 # Internet file retriever
 brew "wget"
 # JavaScript package manager
@@ -193,6 +187,23 @@ brew "yt-dlp"
 # Set of tools and dependencies for plugins on Atlassian server applications
 brew "atlassian/tap/atlassian-plugin-sdk"
 brew "sudar/arduino-mk/arduino-mk"
+brew "websocat"
+brew "ripgrep"
+brew "ranger"
+# better find
+brew "fd"
+# better cat
+brew "bat"
+brew "bat-extras"
+
+brew "jack"
+# gui for controlling jack audio connection kit
+brew "qjackctl"
+
+
+
+# casks
+
 cask "chromium"
 # App to build and share containerized applications and microservices
 cask "docker"
@@ -200,16 +211,18 @@ cask "docker"
 cask "eqmac"
 # Web browser
 cask "firefox"
+
+# fonts
 # very nice coding and terminal font with ligature support
 cask "font-fira-code"
+cask "font-jetbrains-mono-nerd-font"
+
 # Software-defined radio receiver powered by GNU Radio and Qt
 cask "gqrx"
 # Hex editor focussing on speed
 cask "hex-fiend"
 # retro emulation
 cask "mame"
-# chat
-cask "discord"
 # Virtualizer for x86 hardware (does not work on apple silicon as of 220220716)
 #cask "virtualbox"
 # Desktop client for WhatsApp
@@ -219,6 +232,11 @@ cask "caffeine"
 cask "rectangle"
 cask "discord"
 cask "vlc"
+cask "spotify"
+cask "chromium"
+cask "docker"
+cask "obs"
+cask "arduino-ide"
 # retro terminal emulator won't install as of 20220716
 #mas "Cathode", id: 499233976
 mas "Flycut", id: 442160987
