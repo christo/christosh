@@ -17,6 +17,9 @@ import time
 
 # TODO add ThreadPoolExecutor concurrency from concurrent.futures see: 
 # https://docs.python.org/dev/library/concurrent.futures.html#threadpoolexecutor-example
+# TODO generalise repo platform definitions so they can map to subdirs like github.com/username/reponame
+# TODO update repos based on time since latest update being greater than average past few updates (need last pulled data, maybe a poopfile?)
+# TODO browser extension integration instead of clipboard transport
 
 INTERVAL=1.5
 
