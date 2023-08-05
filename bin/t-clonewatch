@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+
+# start clonewatch with its logs tailing in two panes of a new tmux window
+# if the session exists, join it rather than creating a new one
+
+set -eu -o PIPE_FAIL
+
+export CURDIR=$(dirname $0)
+
+
+
+if ( $(tmux has-session -t clonewatch >/dev/null 2>&1) ); then
+    echo clonewatch session already running, attaching 
+    tmux attach -t clonewatch
+else 
+    echo clonewatch not running apparentl
+
+    tmux -u2 new-session -s clonewatch -n clonewatch -d
+    tmux select-window -t clonewatch:clonewatch
+    tmux send-keys -t clonewatch -t clonewatch:clonewatch "clonewatch.py" Enter
+    tmux split-window -v
+    tmux send-keys -t clonewatch "tail -f $(clonewatch.py -l)" Enter
+    tmux select-layout even-vertical
+    tmux -u2 attach -t clonewatch
+
+fi

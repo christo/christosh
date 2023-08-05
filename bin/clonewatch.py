@@ -27,8 +27,8 @@ PARSE_REPO_URL= r'^(?:https://|git@)git(?:hu|la)b\.com:([^/]+)/(.*?)(\.git)?$'
 PARSE_SOURCEHUT_REPO_URL = r'(?:https://git\.sr\.ht/|git@git\.sr\.ht:)~([^/]+)/([^/]+)'
 PARSE_BITBUCKET_REPO_URL = r'^(?:git clone )?(?:git@bitbucket.org:)([^/]+)/([^/]+).git$'
 PARSE_GITHUB_URL = r'^https://github\.com/([^/]+)/([^/?]+)'
-CHECKOUT_BASEDIR=expanduser("~/src/other/")
-LOG=os.path.join(CHECKOUT_BASEDIR, "clonewatch.log")
+REPO_HOME=expanduser("~/src/other/")
+LOG=os.path.join(REPO_HOME, "clonewatch.log")
 
 # parse URLs that are for browser visiting
 # like: https://github.com/under4mhz/microbee
@@ -60,6 +60,14 @@ def git_clone(url, repo_dir):
     return Popen(["git", "clone", "-q", "--recurse-submodules", url, repo_dir], stdout=DEVNULL, stderr=DEVNULL)
 
 def main():
+
+    # args are so simple we don't need to import argparse and do it
+    # the proper way: only one optional arg supported:
+    # -l means print the name of the log file and exit
+    if len(sys.argv) > 1 and sys.argv[1] == '-l':
+        print("%s\n" % LOG)
+        return
+
     print("check log file at {}\n".format(LOG))
     logging.basicConfig(filename=LOG, format='%(asctime)s %(levelname)s %(message)s', level=logging.DEBUG)
     logging.info("startup")
@@ -91,7 +99,7 @@ def main():
                 user, repo = parsed.group(1, 2)
                 latest = (user, repo)
                 # the following can fail, but we probably want to die in that case
-                user_basedir = os.path.join(os.path.join(CHECKOUT_BASEDIR, subdir), user)
+                user_basedir = os.path.join(os.path.join(REPO_HOME, subdir), user)
                 os.makedirs(name=user_basedir, mode=0o755, exist_ok=True)
                 repo_dir = os.path.join(user_basedir, repo)
                 if os.path.exists(repo_dir):
