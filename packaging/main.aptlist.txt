@@ -1,0 +1,23 @@
+haskell-stack
+cabal-install
+clang
+rlwrap
+curl
+tfortune
+hlint
+neofetch
+neovim
+nodejs
+nvm
+pyenv
+brew "pyenv"
+socat
+syncthing
+yt-dlp
+ripgrep
+bat
+docker
+font-jetbrains-mono
+fonts-firacode
+
+
