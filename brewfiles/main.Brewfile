@@ -196,6 +196,12 @@ brew "fd"
 brew "bat"
 brew "bat-extras"
 
+# js/ts dev package manager tool 
+brew "pnpm"
+
+
+#vectorbrat, audio
+
 brew "jack"
 # gui for controlling jack audio connection kit
 brew "qjackctl"
