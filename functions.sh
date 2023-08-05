@@ -181,6 +181,15 @@ maketargets() {
     make -qp|perl -ne's/^(\w[^#\s.\t:]+):/$1/ && print "$1\n"'|sort -u
 }
 
+# show terminal dimensions
+dim() {
+    echo $COLUMNS x $LINES
+}
+
+reloadchristosh() {
+    source "$CHRISTOSH_HOME/sourceme.sh"
+}
+
 
 # VPNs: 
 # AWS Sydney 
