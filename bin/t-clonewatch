@@ -13,8 +13,6 @@ if ( $(tmux has-session -t clonewatch >/dev/null 2>&1) ); then
     echo clonewatch session already running, attaching 
     tmux attach -t clonewatch
 else 
-    echo clonewatch not running apparentl
-
     tmux -u2 new-session -s clonewatch -n clonewatch -d
     tmux select-window -t clonewatch:clonewatch
     tmux send-keys -t clonewatch -t clonewatch:clonewatch "clonewatch.py" Enter
