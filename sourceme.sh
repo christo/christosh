@@ -26,7 +26,8 @@ else
     alias egrep='egrep --color=auto'
     alias ls='ls -G'
     alias ll='ls -l'
-    export LSCOLORS="ExfxcxdxBxegedabagacad" #made dirs and archives lighter by using caps E and B, man ls for voodoo
+    # omz theme should do this:
+    #export LSCOLORS="ExfxcxdxBxegedabagacad" #made dirs and archives lighter by using caps E and B, man ls for voodoo
     export PATH="$CHRISTOSH_HOME/bin:$PATH"
 fi
 
