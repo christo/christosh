@@ -49,9 +49,14 @@ wot() {
 }
 
 #edit profile files
-# TODO update for zsh or maybe detect current shell?
 epfl() {
-    vim -o ~/.bash_profile ~/.bashrc
+    if ( "$SHELL" == "zsh" ); then
+        $EDITOR ~/.zshrc
+    elif ( "$SHELL" == "bash" ); then
+        $EDITOR -o ~/.bash_profile ~/.bashrc
+    else
+        echo Do not know how to edit profile for shell $SHELL
+    fi
 }
 
 #command line media player, good for console streaming radio
@@ -188,6 +193,10 @@ dim() {
 
 reloadchristosh() {
     source "$CHRISTOSH_HOME/sourceme.sh"
+}
+
+report_tmux() {
+    which tmux >/dev/null && tmux has-session >/dev/null 2>&1 && ( echo tmux sessions: ; tmux list-sessions )
 }
 
 
