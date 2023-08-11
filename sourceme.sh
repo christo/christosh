@@ -12,6 +12,7 @@ case "${unameOut}" in
 esac
 
 if [[ -z "$CHRISTOSH_HOME" ]]; then
+    # TODO can we make it work without it?
     echo You need to define \$CHRISTOSH_HOME
 else 
     . $CHRISTOSH_HOME/functions.sh
@@ -26,13 +27,26 @@ else
     alias egrep='egrep --color=auto'
     alias ls='ls -G'
     alias ll='ls -l'
-    # omz theme should do this:
-    #export LSCOLORS="ExfxcxdxBxegedabagacad" #made dirs and archives lighter by using caps E and B, man ls for voodoo
+
+    
     export PATH="$CHRISTOSH_HOME/bin:$PATH"
 fi
 
-if [[ "$machine" == "Mac" && -d /Applications/VICE ]]; then
-	for i in /Applications/VICE/*.app; do
-		alias ${i:18:-5}=open -a $i
-	done
+if [[ "$machine" == "Mac" ]]; then
+    # create aliases for vice apps
+    if [[ -d /Applications/VICE ]]; then
+        for i in /Applications/VICE/*.app; do
+            alias ${i:18:-5}=open -a $i
+        done
+    fi
+    
+    # brew aliases
+    
+    alias brh='brew home'
+    alias bri='brew info'
+    alias brin='brew install'
+    alias brl='brew list'
+    alias bro='brew outdated'
+    alias brs='brew search'
+    alias bru='brew update'
 fi
