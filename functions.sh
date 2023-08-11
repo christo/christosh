@@ -195,6 +195,7 @@ reloadchristosh() {
     source "$CHRISTOSH_HOME/sourceme.sh"
 }
 
+# report tmux sessions, useful to run on login on remote boxes
 report_tmux() {
     which tmux >/dev/null && tmux has-session >/dev/null 2>&1 && ( echo tmux sessions: ; tmux list-sessions )
 }
