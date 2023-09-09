@@ -106,6 +106,12 @@ megs() {
     du -m "${1:-.}" |sort -n
 }
 
+#sorted size totals in gigs of given dir tree (or current)
+gigs() {
+    du -g "${1:-.}" |sort -n
+}
+
+#maven clean install (skipping tests) [..] # cowbell broken, hopefully don't need more cowbell
 mcis() {
     mvn clean install -DskipTests $@
     cowbell
@@ -157,6 +163,7 @@ catmf() {
 }
 
 # how slammed am i?
+# compact 'up' with sparkline output (requires spark)
 # show recent load averages as comes from uptime as a sparkline
 # shows sparkline if you have the spark program
 ups() {
@@ -170,8 +177,7 @@ grepos() {
 
 # do a git pull on repos under the current directory tree unless they're already fresh runs in 3 parallel threads
 gpullr() {
-    # TODO only do a pull if there is a remote as reported by zero exit from: git -C "$0" remote -v
-    #grepos | xargs -n 1 -P 3 -I % bash -c 'echo $0 && GIT_TERMINAL_PROMPT=0 git -C "$0" pull' %
+    # TODO only do a pull if has remote via 0 exit from: git -C "$0" remote -v
     grepos |xargs -n 1 -P 3 -I % bash -c \
         'GIT_TERMINAL_PROMPT=0 git -C "$0" pull 2>&1|perl -e "while(<STDIN>){chomp and print \"$0 \$_\n\";}"' %
 }
@@ -232,3 +238,5 @@ EOF
 alias vpnu='vpn-connect'
 alias vpnd='vpn-disconnect'
 alias remotes='git remote -v'
+
+# vim ft=zsh
