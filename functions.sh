@@ -206,6 +206,13 @@ report_tmux() {
     which tmux >/dev/null && tmux has-session >/dev/null 2>&1 && ( echo tmux sessions: ; tmux list-sessions )
 }
 
+# show latest clonewatch clones
+cw_latest() {
+    ls -tr $HOME/src/other/github.com \
+        | tail \
+        | xargs -I % find "%" -depth 1 -newer "%/.." -not -regex ".*/\..*"
+
+}
 
 # VPNs: 
 # AWS Sydney 
