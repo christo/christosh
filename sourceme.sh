@@ -49,4 +49,6 @@ if [[ "$machine" == "Mac" ]]; then
     alias bro='brew outdated'
     alias brs='brew search'
     alias bru='brew update'
+    alias brg='brew upgrade'
+    alias brh='alias |grep brew'
 fi
