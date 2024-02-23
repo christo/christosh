@@ -1,5 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.10
 
+# python3.10 used because current python3 is python3.12 
+# which seems to suddenly be managed by brew on my machine
+# after latest upgrade
 # requires pyperclip: pip install pyperclip
 
 # continuously watches the system clipboard, aka pastebuffer for git repos
@@ -50,8 +53,8 @@ def github_repo(user, reponame):
     return "git@github.com:{}/{}.git".format(user, reponame)
 
 def update_console(num_running, latest_repo):
-    print("\x1b[1F   latest: {}/{}             ".format(latest_repo[0], latest_repo[1]), end='\n')
-    print("   downloads active: {}             ".format(num_running), end='\r')
+    print("\x1b[1F   downloads active: {}             ".format(num_running), end='\n')
+    print("   latest: {}/{}             ".format(latest_repo[0], latest_repo[1]), end='\r')
 
 def git_pull(repo_dir):
     return Popen(["git", "-C", repo_dir, "pull", "-q", "--recurse-submodules"], stdout=DEVNULL, stderr=DEVNULL)
