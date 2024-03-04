@@ -61,7 +61,7 @@ epfl() {
 
 #command line media player, good for console streaming radio
 cvlc() {
-    /Applications/VLC.app/Contents/MacOS/VLC -I rc $@
+    /Applications/VLC.app/Contents/MacOS/VLC -I rc --play-and-exit $@
 }
 
 # cat which - print the source of an executable on the path by name
