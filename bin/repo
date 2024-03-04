@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+# script for dealing with cloned repos
+# TODO functions for updating trees, showing changes, my forks etc.
+

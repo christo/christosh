@@ -81,6 +81,7 @@ def main():
         url = pyperclip.paste().strip()
         if len(url) > 0 and url != previous_clipboard: 
             previous_clipboard = url
+            # TODO separate gitlab.com and github.com
             subdir = "github.com"
             parsed = parse_github_repo(url)
             if not parsed:
@@ -106,7 +107,7 @@ def main():
                 os.makedirs(name=user_basedir, mode=0o755, exist_ok=True)
                 repo_dir = os.path.join(user_basedir, repo)
                 if os.path.exists(repo_dir):
-                    logging.warning("pull existing {} assuming {}".format(repo_dir, url))
+                    logging.info("pull existing {} assuming {}".format(repo_dir, url))
                     # maybe check this ^ with git remote -v
                     gits.append(git_pull(repo_dir))
                 else:
