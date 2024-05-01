@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# use sh for this; report on absence of preferred zsh 
+# use bash for this; report on absence of preferred zsh 
 
 # system sanity check for a pile of random system configuration settings changes made
 # biased towards macos
