@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # use sh for this; report on absence of preferred zsh 
 
