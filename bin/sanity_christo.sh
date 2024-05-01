@@ -1,5 +1,6 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
+# use sh for this; report on absence of preferred zsh 
 
 # system sanity check for a pile of random system configuration settings changes made
 # biased towards macos
@@ -17,22 +18,38 @@ fi
 
 # tmux 
 TMUX_CONF="$HOME/.tmux.conf"
+echo
 if [[ ! $(which tmux) ]]; then
-    echo
     echo tmux not installed
     retval=1
+elif [[ -z "$TMUX_CONF" ]]; then
+    echo "tmux is installed but TMUX_CONF is not defined"
 elif [[ ! -f "$TMUX_CONF" ]]; then
-    echo 
-    echo "$TMUX_CONF does not exist"
+    echo "TMUX_CONF is defined as '$TMUX_CONF' but the file does not exist"
     retval=1
 elif [[ ! $(egrep '^set -g default-terminal "screen-256color"' ~/.tmux.conf) ]]; then
-    echo
     echo "expected $TMUX_CONF to set default-terminal thus:"
     echo 'set -g default-terminal "screen-256color"'
     echo "but here\'s what I found for that:"
     echo $(grep 'set -g default-terminal' ~/.tmux.conf)
-
     retval=1
 fi
+
+# warn if missing but not fail
+for i in cargo node gradle yt-dlp nvim spark neofetch ffmpeg figlet lein sbt jq npm unzip psql socat https svn hg wget curl bat docker bat; do
+    if [[ ! $(which $i) ]]; then
+        echo "warning: $i not found"
+    fi
+done
+
+# these 
+
+# common utilities
+for i in git ghcup make gcc vim md5sum sha1sum zsh watch nc telnet perl rsync ssh nohup ; do
+    if [[ ! $(which $i) ]]; then
+        echo "fail: $i not found"
+        retval=1
+    fi
+done
 
 exit $retval
