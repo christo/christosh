@@ -273,6 +273,7 @@ cask "chromium"
 cask "docker"
 cask "obs"
 cask "arduino-ide"
+cask "raspberry-pi-imager"
 
 # mac app store installs
 
