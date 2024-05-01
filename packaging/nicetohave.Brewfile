@@ -1,7 +1,8 @@
 brew "transmission-cli"
 
 # Extensible IRC client
-brew "weechat"
+# I don't like this any more
+#brew "weechat"
 
 # retro stuff
 
