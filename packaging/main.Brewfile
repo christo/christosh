@@ -274,6 +274,8 @@ cask "docker"
 cask "obs"
 cask "arduino-ide"
 cask "raspberry-pi-imager"
+# moonlander keyboard mapping viewer
+cask "keymapp"
 
 # mac app store installs
 
