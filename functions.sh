@@ -73,6 +73,7 @@ cw() {
 # see also psgrep
 psg() {
     ps aux |grep $@ |grep -v grep
+    echo apparently use psgrep bro
 }
 
 cleanMavenSnapshots() {
@@ -119,6 +120,7 @@ mcis() {
 
 # lists processes listening on tcp ports
 listeners() {
+    # TODO linux equivalent
     lsof -i -P -n -sTCP:LISTEN $@
 }
 
@@ -127,6 +129,7 @@ server () {
     local host=`hostname`;
     local port="${1:-8888}";
     ( sleep 1 && open "http://${host}:${port}/" ) & python3 -m http.server  "$port"
+    # this was the python2 way
     #( sleep 1 && open "http://${host}:${port}/" ) & python -m SimpleHTTPServer "$port"
 }
 
@@ -208,6 +211,7 @@ report_tmux() {
 
 # show latest clonewatch clones
 cw_latest() {
+    # TODO move to clonewatch repo
     ls -tr $HOME/src/other/github.com \
         | tail \
         | xargs -I % find "%" -depth 1 -newer "%/.." -not -regex ".*/\..*"
