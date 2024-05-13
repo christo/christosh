@@ -7,6 +7,17 @@
 
 retval=0
 
+# check .ssh 
+if [[ ! -d "$HOME/.ssh" ]]; then
+    echo no .ssh dir in home
+    echo create with:
+    echo
+    echo mkdir $HOME/.ssh
+    echo chmod 700 $HOME/.ssh
+    echo
+    retval=1
+fi
+
 # terminfo 
 if [[ -z "$TERMINFO" ]]; then
     echo
