@@ -16,8 +16,3 @@ fi
 echo arp table
 arp -a for MAC addresses
 
-# TODO which local hosts have port 22 open?
-
-# TODO what machines can I ssh to only with keys?
-
-# TODO what are the pings to the machines?
