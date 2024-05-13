@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+# script to scan local network for known hosts who are up
+# note that this relies greatly on the hosts being honest
+
+# TODO what network am I on?
+echo -n "local ip address "
+if [[ $(uname) == 'Darwin' ]]; then
+    #ifconfig | grep -E 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -v '::1' | awk '{ print $2 }' | sed 's/addr://g'
+    ifconfig | grep -E 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1\|::1' | awk '{ print $2 }' | sed 's/addr://g'
+else
+    ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{ print $2 }' | cut -d'/' -f1
+fi
+
+
+echo arp table
+arp -a for MAC addresses
+
+# TODO which local hosts have port 22 open?
+
+# TODO what machines can I ssh to only with keys?
+
+# TODO what are the pings to the machines?
