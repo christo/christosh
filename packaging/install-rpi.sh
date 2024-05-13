@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-sudo apt install -y neovim zsh
+sudo apt update
+
+# minimal
+sudo apt install -y neovim zsh 
