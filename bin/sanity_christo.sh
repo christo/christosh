@@ -7,6 +7,22 @@
 
 retval=0
 
+if [[ $(which neofetch) ]]; then
+    neofetch
+else
+    echo "neofetch is missing"
+fi
+
+if [[ $(which machine) ]]; then
+    echo -n "machine: "
+    machine
+elif [[ -e /proc/device-tree/model ]]; then 
+    cat /proc/device-tree/model
+    echo
+else
+    uname -a
+fi
+
 # check .ssh 
 if [[ ! -d "$HOME/.ssh" ]]; then
     echo no .ssh dir in home
