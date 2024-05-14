@@ -3,4 +3,4 @@
 sudo apt update
 
 # minimal
-sudo apt install -y neovim zsh 
+sudo apt install -y neovim zsh neofetch
