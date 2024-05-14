@@ -2,17 +2,56 @@
 
 # script to scan local network for known hosts who are up
 # note that this relies greatly on the hosts being honest
+# also reports what wifi access point SSID is connected (if any)
+# TODO signal strength
+# TODO ethernet LAN detection (which network am i on?)
+# TODO report missing tools (e.g. arp)
+#
+
+function DarwinDumpWifi() {
+    /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I
+}
+
+function LinuxDumpWifi() {
+    echo TODO
+    exit 1
+}
+
+function DarwinAccessPoint() {
+    networksetup -getairportnetwork en0 | awk '{ print $4 }'
+}
+
+function DarwinLocalIp() {
+    ifconfig | grep -E 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1\|::1' | awk '{ print $2 }' | sed 's/addr://g'
+}
+
+function LinuxLocalIp() {
+    ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{ print $2 }' | cut -d'/' -f1
+}
+
+function LinuxAccessPoint() {
+    echo TODO
+    exit 1
+}
+
+function LinuxArp() {
+    sudo arp -a
+}
+
+function DarwinArp() {
+    arp -a
+}
 
 # TODO what network am I on?
 echo -n "local ip address "
 if [[ $(uname) == 'Darwin' ]]; then
-    #ifconfig | grep -E 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -v '::1' | awk '{ print $2 }' | sed 's/addr://g'
     ifconfig | grep -E 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1\|::1' | awk '{ print $2 }' | sed 's/addr://g'
+    echo arp table
+    DarwinArp()
 else
     ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{ print $2 }' | cut -d'/' -f1
+    echo arp table
+    LinuxArp()
 fi
 
-
-echo arp table
-arp -a for MAC addresses
 
