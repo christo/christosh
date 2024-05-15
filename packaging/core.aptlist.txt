@@ -1,4 +1,4 @@
 zsh
 neovim
-
+neofetch
 

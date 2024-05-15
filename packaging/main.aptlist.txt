@@ -1,3 +1,4 @@
+# maybe we use ghcup from now on
 haskell-stack
 cabal-install
 clang
@@ -10,14 +11,12 @@ neovim
 nodejs
 nvm
 pyenv
-brew "pyenv"
+#brew "pyenv"
 socat
 syncthing
 yt-dlp
 ripgrep
 bat
 docker
-font-jetbrains-mono
-fonts-firacode
 
 
