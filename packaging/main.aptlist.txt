@@ -11,12 +11,14 @@ neovim
 nodejs
 nvm
 pyenv
-#brew "pyenv"
 socat
 syncthing
 yt-dlp
 ripgrep
 bat
 docker
+fasd
+fzf
 
-
+# reading temperatures on non-rpi linux:
+lm-sensors
