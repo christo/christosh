@@ -1,2 +1,4 @@
 brewfiles/*.Brewfile.lock.json
 brewfiles/Brewfile.lock.json
+*.swp
+*.swo
