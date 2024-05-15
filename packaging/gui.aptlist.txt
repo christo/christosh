@@ -1,0 +1,2 @@
+font-jetbrains-mono
+fonts-firacode
