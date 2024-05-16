@@ -43,15 +43,15 @@ function DarwinArp() {
 }
 
 # TODO what network am I on?
-echo -n "local ip address "
+echo "local ip addresses: "
 if [[ $(uname) == 'Darwin' ]]; then
     ifconfig | grep -E 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1\|::1' | awk '{ print $2 }' | sed 's/addr://g'
-    echo arp table
-    DarwinArp()
+    echo arp table:
+    DarwinArp
 else
     ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{ print $2 }' | cut -d'/' -f1
-    echo arp table
-    LinuxArp()
+    echo arp table:
+    LinuxArp
 fi
 
 
