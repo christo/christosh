@@ -218,6 +218,10 @@ cw_latest() {
 
 }
 
+bro() {
+    brew outdated | xargs brew desc
+}
+
 # VPNs: 
 # AWS Sydney 
 # AWS VPN

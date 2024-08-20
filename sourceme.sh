@@ -46,7 +46,8 @@ if [[ "$machine" == "Mac" ]]; then
     alias bri='brew info'
     alias brin='brew install'
     alias brl='brew list'
-    alias bro='brew outdated'
+    # bro now a function
+    #alias bro='brew outdated'
     alias brs='brew search'
     alias bru='brew update'
     alias brg='brew upgrade'
