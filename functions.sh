@@ -219,7 +219,16 @@ cw_latest() {
 }
 
 bro() {
-    brew outdated | xargs brew desc
+    brew outdated
+}
+
+brov() {
+    echo brew outdated listing dependents
+    brew outdated \
+        | tee >(xargs -I {} brew desc "{}") \
+        | xargs -L 1 brew uses --installed --recursive \
+        | xargs -L 1 echo | perl -pe 's/^/    /'
+    
 }
 
 # VPNs: 
