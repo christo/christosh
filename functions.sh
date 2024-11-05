@@ -99,7 +99,7 @@ dfull() {
 
 # disk free root fs human readable
 dfree() {
-     df -h / | tail -1 | perl -ne '/(\S+\s+){3}(\S+)/ && print"$2\n"'
+    df -h ${1:-/} | tail -1 | perl -ne '/(\S+\s+){3}(\S+)/ && print"$2\n"'
 }
 
 #sorted size totals in megs of given dir tree (or current)
