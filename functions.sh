@@ -1,5 +1,5 @@
 
-#originally developerd on bash, now I run them on zsh and they seem to work
+#originally developed on bash, now I run them on zsh and they seem to work
 
 # waits for the given pid to finish
 waitfor() {
@@ -102,17 +102,17 @@ dfree() {
     df -h ${1:-/} | tail -1 | perl -ne '/(\S+\s+){3}(\S+)/ && print"$2\n"'
 }
 
-#sorted size totals in megs of given dir tree (or current)
+# sorted size totals in megs of given dir tree (or current)
 megs() {
     du -m "${1:-.}" |sort -n
 }
 
-#sorted size totals in gigs of given dir tree (or current)
+# sorted size totals in gigs of given dir tree (or current)
 gigs() {
     du -g "${1:-.}" |sort -n
 }
 
-#maven clean install (skipping tests) [..] # cowbell broken, hopefully don't need more cowbell
+# maven clean install (skipping tests) [..] # cowbell broken, hopefully don't need more cowbell
 mcis() {
     mvn clean install -DskipTests $@
     cowbell
@@ -169,13 +169,15 @@ catmf() {
 # compact 'up' with sparkline output (requires spark)
 # show recent load averages as comes from uptime as a sparkline
 # shows sparkline if you have the spark program
+# shows load average in cute way
 ups() {
     l=`uptime | perl -p -e 's/.*averages: (.*)/$1/'`
     which spark >>/dev/null && echo $l |spark || echo $l
 }
 
+# list all git repos under the given dir (default to .)
 grepos() {
-    for i in *; do find "$i" -name '.git' -maxdepth 6 -type d | perl -pe 's/(.*)\.git/$1/'; done
+    for i in "${1:-.}"/*; do find "$i" -name '.git' -maxdepth 6 -type d | perl -pe 's/(.*)\.git/$1/'; done
 }
 
 # do a git pull on repos under the current directory tree unless they're already fresh runs in 3 parallel threads
@@ -200,6 +202,7 @@ dim() {
     echo $COLUMNS x $LINES
 }
 
+# reload christosh
 reloadchristosh() {
     source "$CHRISTOSH_HOME/sourceme.sh"
 }
@@ -218,10 +221,18 @@ cw_latest() {
 
 }
 
+# brew outdated
 bro() {
     brew outdated
 }
 
+# do brew update and brew outdated
+bruo() {
+  brew update
+  brew outdated
+}
+
+# show outdated brew packages with their installed dependents
 brov() {
     echo brew outdated listing dependents
     brew outdated \
@@ -229,6 +240,11 @@ brov() {
         | xargs -L 1 brew uses --installed --recursive \
         | xargs -L 1 echo | perl -pe 's/^/    /'
     
+}
+
+# list all functions defined in this file
+listfunctions() {
+  egrep '\w+\(\)' -B 1  "$CHRISTOSH_HOME/functions.sh" | perl -n -e 'm/(?:(\w+\(\))\s+{|(^#.*))/ and print("$1$2\n")'
 }
 
 # VPNs: 
