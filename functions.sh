@@ -244,7 +244,7 @@ brov() {
 
 # list all functions defined in this file
 listfunctions() {
-  egrep '\w+\(\)' -B 1  "$CHRISTOSH_HOME/functions.sh" | perl -n -e 'm/(?:(\w+\(\))\s+{|(^#.*))/ and print("$1$2\n")'
+  perl -0777 -ne 'while(/(?:((?m:^#\h*(.*?)\n)*))(^\h*(\w+\(\)))\h*{/mg){print join("",grep{$_} split(/^#\h*/m,$1),$4)."\n\n"}' "$CHRISTOSH_HOME/functions.sh"
 }
 
 # VPNs: 
