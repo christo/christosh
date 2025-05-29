@@ -1,11 +1,6 @@
 tap "atlassian/tap"
 tap "ethereum/ethereum"
-tap "homebrew/bundle"
-# deprecated as of 202308
-# tap "homebrew/cask"
-# tap "homebrew/core"
 tap "homebrew/cask-fonts"
-tap "homebrew/services"
 tap "osrf/simulation"
 tap "pivotal/tap"
 tap "ngrok/ngrok"
@@ -62,7 +57,7 @@ brew "ngrok"
 
 # don't use brew for installing haskell tool chain, just install ghcup to do that
 # TODO confirm ghcup installs ghc, stack, cabal, hlint, haskell-language-server
-brew ghcup
+brew "ghcup"
 
 # Cross-platform program for developing Haskell projects
 # brew "haskell-stack"
@@ -76,7 +71,8 @@ brew ghcup
 # brew "cabal-install"
 
 # Add GitHub support to git on the command-line
-brew "hub"
+# replaced by gh
+#brew "hub"
 # TODO figure out why brew doctor whines about this
 # Scalable distributed version control system
 brew "mercurial"

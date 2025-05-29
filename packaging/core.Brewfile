@@ -1,10 +1,10 @@
-
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # CLI tool for quick access to files and directories
-brew "fasd"
+# fasd seems to be deprecated?
+#brew "fasd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Banner-like program prints strings as ASCII art
@@ -46,3 +46,6 @@ brew "watch"
 brew "wget"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
+# window manipulation system
+brew "rectangle"
+brew "iterm2"
