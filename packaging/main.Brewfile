@@ -39,35 +39,15 @@ brew "gnutls"
 brew "lame"
 # Open source computer vision library
 brew "opencv"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
 # Readline wrapper: adds readline support to tools that lack it
 brew "rlwrap"
 # Cross-platform make
 brew "cmake"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
-# CLI tool for quick access to files and directories
-brew "fasd"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
-# Banner-like program prints strings as ASCII art
-brew "figlet"
-# Infamous electronic fortune-cookie generator
-brew "fortune"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # GNU debugger
 brew "gdb"
-# GitHub command-line tool
-brew "gh"
-# Distributed revision control system
-brew "git"
 brew "zsh-syntax-highlighting"
-# Git extension for versioning large files
-brew "git-lfs"
 # SDK for signal processing blocks to implement software radios
 brew "gnuradio"
 # Graph visualization software from AT&T and Bell Labs
@@ -88,7 +68,6 @@ brew ghcup
 # brew "haskell-stack"
 # Haskell source code suggestions
 # brew "hlint"
-# User-friendly cURL replacement (command-line HTTP client)
 # Integration point for ghcide and haskell-ide-engine. One IDE to rule them all
 # brew "haskell-language-server"
 # Glorious Glasgow Haskell Compilation System
@@ -96,16 +75,9 @@ brew ghcup
 # Command-line interface for Cabal and Hackage
 # brew "cabal-install"
 
-brew "httpie"
 # Add GitHub support to git on the command-line
 brew "hub"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
 # TODO figure out why brew doctor whines about this
-# Hash utilities 
-brew "md5sha1sum", link: false
 # Scalable distributed version control system
 brew "mercurial"
 # MP3 player for Linux and UNIX
@@ -116,8 +88,6 @@ brew "mysql"
 brew "ncftp"
 # Fast, highly customisable system info script
 brew "neofetch"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 
 # java/jvm dev
 
@@ -185,7 +155,7 @@ brew "ruby"
 brew "go"
 
 # Count lines of code in many languages
-brew "sloccount"
+#brew "sloccount"
 # SOcket CAT: netcat on steroids
 brew "socat"
 # Sparklines for the shell
@@ -198,28 +168,16 @@ brew "streamlink"
 brew "streamripper"
 # Version control system designed to be a better CVS
 brew "subversion"
-# Open source continuous file synchronization application
-brew "syncthing", restart_service: true
 # User interface to the TELNET protocol
 brew "telnet"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
-# Programmatically correct mistyped console commands
-brew "thefuck"
-# Terminal multiplexer
-brew "tmux"
 # Anonymizing overlay network for TCP
 brew "tor"
 # Extract, view, and test RAR archives
 # unrar no longer supported by homebrew due to licensing use 7z for rar archives as per:
 # https://github.com/Homebrew/discussions/discussions/285
 #brew "unrar"
-# Executes a program periodically, showing output fullscreen
-brew "watch"
-# Internet file retriever
-brew "wget"
-# Fork of youtube-dl with additional features and fixes
-brew "yt-dlp"
 # Set of tools and dependencies for plugins on Atlassian server applications
 brew "atlassian/tap/atlassian-plugin-sdk"
 brew "sudar/arduino-mk/arduino-mk"
