@@ -1,0 +1,5 @@
+brew "claude"
+brew "mods"
+brew "chatgpt"
+brew "lm-studio"
+brew "llama.cpp"
