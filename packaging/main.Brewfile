@@ -4,6 +4,11 @@ tap "homebrew/cask-fonts"
 tap "osrf/simulation"
 tap "pivotal/tap"
 tap "ngrok/ngrok"
+
+# vpn
+brew "tailscale"
+
+
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Low-level access to audio, keyboard, mouse, joystick, and graphics
